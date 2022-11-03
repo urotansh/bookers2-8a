@@ -20,9 +20,14 @@
 <%# 一覧表示対象ユーザとログインユーザが一致する行はフォロー/フォロー解除ボタン非表示  %>
 <% if user != current_user %>
   <%= render 'relationships/btn', user: user %>
+  
+  <% if user.followed_by?(current_user) && user.following?(current_user) %>
+    <%= link_to "chatを始める", message_path(user.id), class: "btn btn-outline-success" %>
+  <% end %>
+  
 <% else %>
   <div class='row'>
-    <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
+    <%= link_to edit_user_path(user.id), class: "btn btn-outline-secondary btn-block" do %>
       <i class="fas fa-user-cog"></i>
     <% end %>
   </div>
