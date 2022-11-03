@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   
   get "searches" => "searches#search"
   
+  resources :messages, only: [:show, :create]
+  
 end
