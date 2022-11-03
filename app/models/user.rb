@@ -10,6 +10,7 @@ class User < ApplicationRecord
   
   has_many :room_users
   has_many :rooms, through: :room_users
+  has_many :messages
   
   # userとrelationshipsが1:Nの関係
   has_many :relationships, class_name: "Relationship",
