@@ -8,6 +8,9 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
   
+  has_many :room_users
+  has_many :rooms, through: :room_users
+  
   # userとrelationshipsが1:Nの関係
   has_many :relationships, class_name: "Relationship",
                            foreign_key: "follower_id",
