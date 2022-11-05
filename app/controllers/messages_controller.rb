@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  layout 'no_search_footer_application'
+  
   def show
     @user = User.find(params[:id])
     
