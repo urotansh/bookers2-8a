@@ -1,1 +1,39 @@
-<h1><%= @user.name %> さんとのチャット</h1>
+<div class="bg-info m-3" style="height: 100vh">
+  <div class="container">
+    <h1><%= @user.name %> さんとのチャット</h1>
+  </div>
+
+  <div class="container px-5 py-3 mb-3 w-70 bg-info">
+    <% @messages.each do |message| %>
+      <% if message.user_id == current_user.id %>
+        <div class="row d-flex justify-content-start">
+          <p class="my-auto small">
+            <%= current_user.name %><br>
+            <%= message.created_at.strftime('%H:%M') %>
+          </p>
+          <p class="btn btn-success rounded-pill m-1">
+            <%= message.message %>
+          </p>
+        </div>
+      <% else %>
+        <div class="row d-flex justify-content-end">
+          <p class="btn btn-secondary rounded-pill m-1">
+            <%= message.message %>
+          </p>
+          <p class="my-auto small">
+            <%= @user.name %><br>
+            <%= message.created_at.strftime('%H:%M') %>
+          </p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<div> </div>
+<div class="fixed-bottom bg-light border">
+  <%= form_with model: @message, class: "d-flex justify-content-center" do |f| %>
+    <%= f.text_field :message, class: "form-control border-success rounded-pill m-3" %>
+    <%= f.hidden_field :room_id %>
+    <% f.submit %>
+  <% end %>
+</div>
