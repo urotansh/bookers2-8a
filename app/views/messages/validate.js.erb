@@ -1,0 +1,4 @@
+$('.errors').html("<div class='bg-danger text-white'><%= j(render 'layouts/errors', obj: @message) %></div>");
+var element = document.documentElement;
+var bottom = element.scrollHeight - element.clientHeight;
+window.scroll({top: bottom, behavior: "smooth"});

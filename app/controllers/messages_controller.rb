@@ -33,7 +33,7 @@ class MessagesController < ApplicationController
     if @message.save
       render :create
     else
-      render :show
+      render :validate
     end
     
   end
