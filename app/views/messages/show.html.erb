@@ -3,7 +3,7 @@
     <h1><%= @user.name %> さんとのチャット</h1>
   </div>
 
-  <div class="container">
+  <div class="container message-list">
     <% @messages.each do |message| %>
       <% if message.user_id == current_user.id %>
         <div class="row d-flex justify-content-start">
@@ -31,7 +31,7 @@
 </div>
 <div style="padding-bottom: 70px;"> </div>
 <div class="fixed-bottom bg-light border">
-  <%= form_with model: @message, class: "d-flex justify-content-center" do |f| %>
+  <%= form_with model: @message, local: false, class: "d-flex justify-content-center" do |f| %>
     <%= f.text_field :message, class: "form-control border-success rounded-pill m-3" %>
     <%= f.hidden_field :room_id %>
     <% f.submit %>

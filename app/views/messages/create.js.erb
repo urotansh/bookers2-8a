@@ -1,0 +1,15 @@
+$(".message-list").
+  append(
+    '<div class="row d-flex justify-content-start">\
+      <p class="my-auto small">\
+        <%= current_user.name %><br>\
+        <%= @message.created_at.strftime("%H:%M") %>\
+      </p>\
+      <p class="btn btn-success rounded-pill m-1">\
+        <%= @message.message %>\
+      </p>\
+    </div>')
+var element = document.documentElement;
+var bottom = element.scrollHeight - element.clientHeight;
+window.scroll({top: bottom, behavior: "smooth"});
+$("#message_message").val("")
